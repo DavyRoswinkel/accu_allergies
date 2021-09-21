@@ -8,7 +8,9 @@
 # Updated: 26/06/2020
 # added postcode in addition to ID for some locations
 ############################################################
-
+# original repository: https://github.com/simonhq/accu_allergies
+# I (DavyRoswinkel)only translated some stuff for personal use.
+# ! Please keep this text in tact!
 ############################################################
 # 
 # In the apps.yaml file you will need the following
