@@ -9,7 +9,7 @@
 # added postcode in addition to ID for some locations
 ############################################################
 # original repository: https://github.com/simonhq/accu_allergies
-# I (DavyRoswinkel)only translated some stuff for personal use.
+# I (DavyRoswinkel)only translated some stuff for personal use. I made translations in Dutch.
 # ! Please keep this text in tact!
 ############################################################
 # 
