@@ -242,10 +242,10 @@ class Get_Accu_Allergies(hass.Hass):
         #create the hassio sensors for today and tomorrow for ragweed        
         if(len(myvals) > 1):
             self.set_state("sensor.acc_lucht_kwaliteit_vandaag", state=myvals[0].text, replace=True, attributes={"icon": "mdi:air-purifier", "friendly_name": "Lucht Kwaliteit Vandaag", "luchtkwaliteitsindex_vandaag": myvals[0].text + " - " + mytext[0].text , "luchtkwaliteitsindex_vandaag_info": mystate[0].text })
-            self.set_state("sensor.acc_lucht_kwaliteit_morgen", state=myvals[2].text, replace=True, attributes={"icon": "mdi:air-purifier", "friendly_name": "Lucht Kwaliteit Morgen", "tomorrow_air_value": myvals[2].text + " - " + mytext[2].text , "tomorrow_air_phrase": mystate[2].text })
+            self.set_state("sensor.acc_lucht_kwaliteit_morgen", state=myvals[2].text, replace=True, attributes={"icon": "mdi:air-purifier", "friendly_name": "Lucht Kwaliteit Morgen", "luchtkwaliteitsindex_morgen": myvals[2].text + " - " + mytext[2].text , "luchtkwaliteitsindex_morgen_info": mystate[2].text })
         else:
-            self.set_state("sensor.acc_lucht_kwaliteit_vandaag", state='Onbekend', replace=True, attributes={"icon": "mdi:air-purifier", "friendly_name": "Lucht Kwaliteit Vandaag", "today_air_value": 'Onbekend' , "today_air_phrase": 'Onbekend' })
-            self.set_state("sensor.acc_lucht_kwaliteit_morgen", state='Onbekend', replace=True, attributes={"icon": "mdi:air-purifier", "friendly_name": "Lucht Kwaliteit Morgen", "tomorrow_air_value": 'Onbekend' , "tomorrow_air_phrase": 'Onbekend' })
+            self.set_state("sensor.acc_lucht_kwaliteit_vandaag", state='Onbekend', replace=True, attributes={"icon": "mdi:air-purifier", "friendly_name": "Lucht Kwaliteit Vandaag", "luchtkwaliteitsindex_vandaag": 'Onbekend' , "luchtkwaliteitsindex_vandaag_info": 'Onbekend' })
+            self.set_state("sensor.acc_lucht_kwaliteit_morgen", state='Onbekend', replace=True, attributes={"icon": "mdi:air-purifier", "friendly_name": "Lucht Kwaliteit Morgen", "luchtkwaliteitsindex_morgen": 'Onbekend' , "luchtkwaliteitsindex_morgen_info": 'Onbekend' })
 
         
     #get the info for pollens - ragweed, grass, tree, mold, dust and air quality
@@ -264,11 +264,11 @@ class Get_Accu_Allergies(hass.Hass):
         if(len(myvals) > 1):
             myvalseta = self.cleanString(myvals[0].text.split('>'))
             myvalsetb = self.cleanString(myvals[1].text.split('>'))
-            self.set_state("sensor.acc_ambrosia_pollen_vandaag", state=myvalseta, replace=True, attributes={"icon": "mdi:clover", "friendly_name": "Ambrosia Pollen Vandaag", "today_ragweed_value": myvals[0].text , "today_ragweed_phrase": myconds[0].text })
-            self.set_state("sensor.acc_ambrosia_pollen_morgen", state=myvalsetb, replace=True, attributes={"icon": "mdi:clover", "friendly_name": "Ambrosia Pollen Morgen", "tomorrow_ragweed_value": myvals[1].text , "tomorrow_ragweed_phrase": myconds[1].text })
+            self.set_state("sensor.acc_ambrosia_pollen_vandaag", state=myvalseta, replace=True, attributes={"icon": "mdi:clover", "friendly_name": "Ambrosia Pollen Vandaag", "ambrosia_gehalte_vandaag": myvals[0].text , "ambrosia_info_vandaag": myconds[0].text })
+            self.set_state("sensor.acc_ambrosia_pollen_morgen", state=myvalsetb, replace=True, attributes={"icon": "mdi:clover", "friendly_name": "Ambrosia Pollen Morgen", "ambrosia_gehalte_morgen": myvals[1].text , "ambrosia_info_morgen": myconds[1].text })
         else:
-            self.set_state("sensor.acc_ambrosia_pollen_vandaag", state='Onbekend', replace=True, attributes={"icon": "mdi:clover", "friendly_name": "Ambrosia Pollen Vandaag", "today_ragweed_value": 'Onbekend' , "today_ragweed_phrase": 'Onbekend' })
-            self.set_state("sensor.acc_ambrosia_pollen_morgen", state='Onbekend', replace=True, attributes={"icon": "mdi:clover", "friendly_name": "Ambrosia Pollen Morgen", "tomorrow_ragweed_value": 'Onbekend' , "tomorrow_ragweed_phrase": 'Onbekend' })
+            self.set_state("sensor.acc_ambrosia_pollen_vandaag", state='Onbekend', replace=True, attributes={"icon": "mdi:clover", "friendly_name": "Ambrosia Pollen Vandaag", "ambrosia_gehalte_vandaag": 'Onbekend' , "ambrosia_info_vandaag": 'Onbekend' })
+            self.set_state("sensor.acc_ambrosia_pollen_morgen", state='Onbekend', replace=True, attributes={"icon": "mdi:clover", "friendly_name": "Ambrosia Pollen Morgen", "ambrosia_gehalte_morgen": 'Onbekend' , "ambrosia_info_morgen": 'Onbekend' })
 
 
     #get the info for pollens - ragweed, grass, tree, mold, dust and air quality
@@ -287,11 +287,11 @@ class Get_Accu_Allergies(hass.Hass):
         if(len(myvals) > 1):
             myvalseta = self.cleanString(myvals[0].text.split('>'))
             myvalsetb = self.cleanString(myvals[1].text.split('>'))
-            self.set_state("sensor.acc_gras_pollen_vandaag", state=myvalseta, replace=True, attributes={"icon": "mdi:barley", "friendly_name": "Gras Pollen Vandaag", "today_grass_value": myvals[0].text , "today_grass_phrase": myconds[0].text })
-            self.set_state("sensor.acc_gras_pollen_morgen", state=myvalsetb, replace=True, attributes={"icon": "mdi:barley", "friendly_name": "Gras Pollen Morgen", "tomorrow_grass_value": myvals[1].text , "tomorrow_grass_phrase": myconds[1].text })
+            self.set_state("sensor.acc_gras_pollen_vandaag", state=myvalseta, replace=True, attributes={"icon": "mdi:barley", "friendly_name": "Gras Pollen Vandaag", "graspollen_gehalte_vandaag": myvals[0].text , "gras_info_vandaag": myconds[0].text })
+            self.set_state("sensor.acc_gras_pollen_morgen", state=myvalsetb, replace=True, attributes={"icon": "mdi:barley", "friendly_name": "Gras Pollen Morgen", "graspollen_gehalte_morgen": myvals[1].text , "gras_info_morgen": myconds[1].text })
         else:
-            self.set_state("sensor.acc_gras_pollen_vandaag", state='Onbekend', replace=True, attributes={"icon": "mdi:barley", "friendly_name": "Gras Pollen Vandaag", "today_grass_value": 'Onbekend' , "today_grass_phrase": 'Onbekend' })
-            self.set_state("sensor.acc_gras_pollen_morgen", state='Onbekend', replace=True, attributes={"icon": "mdi:barley", "friendly_name": "Gras Pollen Morgen", "tomorrow_grass_value": 'Onbekend' , "tomorrow_grass_phrase": 'Onbekend' })
+            self.set_state("sensor.acc_gras_pollen_vandaag", state='Onbekend', replace=True, attributes={"icon": "mdi:barley", "friendly_name": "Gras Pollen Vandaag", "graspollen_gehalte_vandaag": 'Onbekend' , "gras_info_vandaag": 'Onbekend' })
+            self.set_state("sensor.acc_gras_pollen_morgen", state='Onbekend', replace=True, attributes={"icon": "mdi:barley", "friendly_name": "Gras Pollen Morgen", "graspollen_gehalte_morgen": 'Onbekend' , "gras_info_morgen": 'Onbekend' })
 
         
     #get the info for pollens - ragweed, grass, tree, mold, dust and air quality
@@ -310,11 +310,11 @@ class Get_Accu_Allergies(hass.Hass):
         if(len(myvals) > 1):
             myvalseta = self.cleanString(myvals[0].text.split('>'))
             myvalsetb = self.cleanString(myvals[1].text.split('>'))
-            self.set_state("sensor.acc_boom_pollen_vandaag", state=myvalseta, replace=True, attributes={"icon": "mdi:tree-outline", "friendly_name": "Boom Pollen Vandaag", "today_tree_value": myvals[0].text , "today_tree_phrase": myconds[0].text })
-            self.set_state("sensor.acc_boom_pollen_morgen", state=myvalsetb, replace=True, attributes={"icon": "mdi:tree-outline", "friendly_name": "Boom Pollen Morgen", "tomorrow_tree_value": myvals[1].text , "tomorrow_tree_phrase": myconds[1].text })
+            self.set_state("sensor.acc_boom_pollen_vandaag", state=myvalseta, replace=True, attributes={"icon": "mdi:tree-outline", "friendly_name": "Boom Pollen Vandaag", "boompollen_gehalte_vandaag": myvals[0].text , "boompollen_info_vandaag": myconds[0].text })
+            self.set_state("sensor.acc_boom_pollen_morgen", state=myvalsetb, replace=True, attributes={"icon": "mdi:tree-outline", "friendly_name": "Boom Pollen Morgen", "boompollen_gehalte_morgen": myvals[1].text , "boompollen_info_morgen": myconds[1].text })
         else:
-            self.set_state("sensor.acc_boom_pollen_vandaag", state='Onbekend', replace=True, attributes={"icon": "mdi:tree-outline", "friendly_name": "Boom Pollen Vandaag", "today_tree_value": 'Onbekend' , "today_tree_phrase": 'Onbekend' })
-            self.set_state("sensor.acc_boom_pollen_morgen", state='Onbekend', replace=True, attributes={"icon": "mdi:tree-outline", "friendly_name": "Boom Pollen Morgen", "tomorrow_tree_value": 'Onbekend' , "tomorrow_tree_phrase": 'Onbekend' })
+            self.set_state("sensor.acc_boom_pollen_vandaag", state='Onbekend', replace=True, attributes={"icon": "mdi:tree-outline", "friendly_name": "Boom Pollen Vandaag", "boompollen_gehalte_vandaag": 'Onbekend' , "boompollen_info_vandaag": 'Onbekend' })
+            self.set_state("sensor.acc_boom_pollen_morgen", state='Onbekend', replace=True, attributes={"icon": "mdi:tree-outline", "friendly_name": "Boom Pollen Morgen", "boompollen_gehalte_morgen": 'Onbekend' , "boompollen_info_morgen": 'Onbekend' })
 
 
     #get the info for pollens - ragweed, grass, tree, mold, dust and air quality
@@ -333,11 +333,11 @@ class Get_Accu_Allergies(hass.Hass):
         if(len(myvals) > 1):
             myvalseta = self.cleanString(myvals[0].text.split('>'))
             myvalsetb = self.cleanString(myvals[1].text.split('>'))
-            self.set_state("sensor.acc_schimmels_vandaag", state=myvalseta, replace=True, attributes={"icon": "mdi:bacteria-outline", "friendly_name": "Schimmels Vandaag", "today_mold_value": myvals[0].text , "today_mold_phrase": myconds[0].text })
-            self.set_state("sensor.acc_schimmels_morgen", state=myvalsetb, replace=True, attributes={"icon": "mdi:bacteria-outline", "friendly_name": "Schimmels Morgen", "tomorrow_mold_value": myvals[1].text , "tomorrow_mold_phrase": myconds[1].text })
+            self.set_state("sensor.acc_schimmels_vandaag", state=myvalseta, replace=True, attributes={"icon": "mdi:bacteria-outline", "friendly_name": "Schimmels Vandaag", "schimmel_gehalte_vandaag": myvals[0].text , "schimmel_info_vandaag": myconds[0].text })
+            self.set_state("sensor.acc_schimmels_morgen", state=myvalsetb, replace=True, attributes={"icon": "mdi:bacteria-outline", "friendly_name": "Schimmels Morgen", "schimmel_gehalte_morgen": myvals[1].text , "schimmel_info_morgen": myconds[1].text })
         else:
-            self.set_state("sensor.acc_schimmels_vandaag", state='Onbekend', replace=True, attributes={"icon": "mdi:bacteria-outline", "friendly_name": "Schimmels Vandaag", "today_mold_value": 'Onbekend' , "today_mold_phrase": 'Onbekend' })
-            self.set_state("sensor.acc_schimmels_morgen", state='Onbekend', replace=True, attributes={"icon": "mdi:bacteria-outline", "friendly_name": "Schimmels Morgen", "tomorrow_mold_value": 'Onbekend' , "tomorrow_mold_phrase": 'Onbekend' })
+            self.set_state("sensor.acc_schimmels_vandaag", state='Onbekend', replace=True, attributes={"icon": "mdi:bacteria-outline", "friendly_name": "Schimmels Vandaag", "schimmel_gehalte_vandaag": 'Onbekend' , "schimmel_info_vandaag": 'Onbekend' })
+            self.set_state("sensor.acc_schimmels_morgen", state='Onbekend', replace=True, attributes={"icon": "mdi:bacteria-outline", "friendly_name": "Schimmels Morgen", "schimmel_gehalte_morgen": 'Onbekend' , "schimmel_info_morgen": 'Onbekend' })
     
 
     #get the info for pollens - ragweed, grass, tree, mold, dust and air quality
@@ -356,11 +356,11 @@ class Get_Accu_Allergies(hass.Hass):
         if(len(myvals) > 1):
             myvalseta = self.cleanString(myvals[0].text.split('>'))
             myvalsetb = self.cleanString(myvals[1].text.split('>'))
-            self.set_state("sensor.acc_huisstofmijt_vandaag", state=myvalseta, replace=True, attributes={"icon": "mdi:cloud-search-outline", "friendly_name": "Huisstofmijt Vandaag", "today_dust_value": myvals[0].text , "today_dust_phrase": myconds[0].text })
-            self.set_state("sensor.acc_huisstofmijt_morgen", state=myvalsetb, replace=True, attributes={"icon": "mdi:cloud-search-outline", "friendly_name": "Huisstofmijt Morgen", "tomorrow_dust_value": myvals[1].text , "tomorrow_dust_phrase": myconds[1].text })
+            self.set_state("sensor.acc_huisstofmijt_vandaag", state=myvalseta, replace=True, attributes={"icon": "mdi:cloud-search-outline", "friendly_name": "Huisstofmijt Vandaag", "huisstofmijt_gehalte_vandaag": myvals[0].text , "huisstofmijt_info_vandaag": myconds[0].text })
+            self.set_state("sensor.acc_huisstofmijt_morgen", state=myvalsetb, replace=True, attributes={"icon": "mdi:cloud-search-outline", "friendly_name": "Huisstofmijt Morgen", "huisstofmijt_gehalte_morgen": myvals[1].text , "huisstofmijt_info_morgen": myconds[1].text })
         else:
-            self.set_state("sensor.acc_huisstofmijt_vandaag", state='Onbekend', replace=True, attributes={"icon": "mdi:cloud-search-outline", "friendly_name": "Huisstofmijt Vandaag", "today_dust_value": 'Onbekend' , "today_dust_phrase": 'Onbekend' })
-            self.set_state("sensor.acc_huisstofmijt_morgen", state='Onbekend', replace=True, attributes={"icon": "mdi:cloud-search-outline", "friendly_name": "Huisstofmijt Morgen", "tomorrow_dust_value": 'Onbekend' , "tomorrow_dust_phrase": 'Onbekend' })
+            self.set_state("sensor.acc_huisstofmijt_vandaag", state='Onbekend', replace=True, attributes={"icon": "mdi:cloud-search-outline", "friendly_name": "Huisstofmijt Vandaag", "huisstofmijt_gehalte_vandaag": 'Onbekend' , "huisstofmijt_info_vandaag": 'Onbekend' })
+            self.set_state("sensor.acc_huisstofmijt_morgen", state='Onbekend', replace=True, attributes={"icon": "mdi:cloud-search-outline", "friendly_name": "Huisstofmijt Morgen", "huisstofmijt_gehalte_morgen": 'Onbekend' , "huisstofmijt_info_morgen": 'Onbekend' })
     
     #get the info for cold and flu
     def get_coldflu_cold_info(self, txt):
@@ -378,11 +378,11 @@ class Get_Accu_Allergies(hass.Hass):
         if(len(myvals) > 1):
             myvalseta = self.cleanString(myvals[0].text.split('>'))
             myvalsetb = self.cleanString(myvals[1].text.split('>'))
-            self.set_state("sensor.acc_verkoudheid_vandaag", state=myvalseta, replace=True, attributes={"icon": "mdi:snowflake-alert", "friendly_name": "Verkoudheid Vandaag", "today_common_value": myvals[0].text , "today_common_phrase": myconds[0].text })
-            self.set_state("sensor.acc_common_cold_tomorrow", state=myvalsetb, replace=True, attributes={"icon": "mdi:snowflake-alert", "friendly_name": "Common Cold Tomorrow", "tomorrow_common_value": myvals[1].text , "tomorrow_common_phrase": myconds[1].text })
+            self.set_state("sensor.acc_verkoudheid_vandaag", state=myvalseta, replace=True, attributes={"icon": "mdi:snowflake-alert", "friendly_name": "Verkoudheid Vandaag", "verkoudheids_waarde_vandaag": myvals[0].text , "verkoudheids_info_vandaag": myconds[0].text })
+            self.set_state("sensor.acc_verkoudheid_morgen", state=myvalsetb, replace=True, attributes={"icon": "mdi:snowflake-alert", "friendly_name": "Verkoudheid Morgen", "verkoudheids_waarde_morgen": myvals[1].text , "verkoudheids_info_morgen": myconds[1].text })
         else:
-            self.set_state("sensor.acc_common_cold_today", state='Unknown', replace=True, attributes={"icon": "mdi:snowflake-alert", "friendly_name": "Common Cold Today", "today_common_value": 'Unknown' , "today_common_phrase": 'Unknown' })
-            self.set_state("sensor.acc_common_cold_tomorrow", state='Unknown', replace=True, attributes={"icon": "mdi:snowflake-alert", "friendly_name": "Common Cold Tomorrow", "tomorrow_common_value": 'Unknown' , "tomorrow_common_phrase": 'Unknown' })
+            self.set_state("sensor.acc_verkoudheid_vandaag", state='Onbekend', replace=True, attributes={"icon": "mdi:snowflake-alert", "friendly_name": "Verkoudheid Vandaag", "verkoudheids_waarde_vandaag": 'Onbekend' , "verkoudheids_info_vandaag": 'Onbekend' })
+            self.set_state("sensor.acc_verkoudheid_morgen", state='Onbekend', replace=True, attributes={"icon": "mdi:snowflake-alert", "friendly_name": "Verkoudheid Morgen", "verkoudheids_waarde_morgen": 'Onbekend' , "verkoudheids_info_morgen": 'Onbekend' })
     
 
     def get_coldflu_flu_info(self, txt):
@@ -400,11 +400,11 @@ class Get_Accu_Allergies(hass.Hass):
         if(len(myvals) > 1):
             myvalseta = self.cleanString(myvals[0].text.split('>'))
             myvalsetb = self.cleanString(myvals[1].text.split('>'))
-            self.set_state("sensor.acc_flu_today", state=myvalseta, replace=True, attributes={"icon": "mdi:bacteria", "friendly_name": "Flu Today", "today_flu_value": myvals[0].text , "today_flu_phrase": myconds[0].text })
-            self.set_state("sensor.acc_flu_tomorrow", state=myvalsetb, replace=True, attributes={"icon": "mdi:bacteria", "friendly_name": "Flu Tomorrow", "tomorrow_flu_value": myvals[1].text , "tomorrow_flu_phrase": myconds[1].text })
+            self.set_state("sensor.acc_griep_vandaag", state=myvalseta, replace=True, attributes={"icon": "mdi:bacteria", "friendly_name": "Griep Vandaag", "griep_waarde_vandaag": myvals[0].text , "griep_info_vandaag": myconds[0].text })
+            self.set_state("sensor.acc_griep_morgen", state=myvalsetb, replace=True, attributes={"icon": "mdi:bacteria", "friendly_name": "Griep Morgen", "griep_waarde_morgen": myvals[1].text , "griep_info_morgen": myconds[1].text })
         else:
-            self.set_state("sensor.acc_flu_today", state='Unknown', replace=True, attributes={"icon": "mdi:bacteria", "friendly_name": "Flu Today", "today_flu_value": 'Unknown' , "today_flu_phrase": 'Unknown' })
-            self.set_state("sensor.acc_flu_tomorrow", state='Unknown', replace=True, attributes={"icon": "mdi:bacteria", "friendly_name": "Flu Tomorrow", "tomorrow_flu_value": 'Unknown' , "tomorrow_flu_phrase": 'Unknown' })
+            self.set_state("sensor.acc_griep_vandaag", state='Onbekend', replace=True, attributes={"icon": "mdi:bacteria", "friendly_name": "Griep Vandaag", "griep_waarde_vandaag": 'Onbekend' , "griep_info_vandaag": 'Onbekend' })
+            self.set_state("sensor.acc_griep_morgen", state='Onbekend', replace=True, attributes={"icon": "mdi:bacteria", "friendly_name": "Griep Morgen", "griep_waarde_morgen": 'Onbekend' , "griep_info_morgen": 'Onbekend' })
         
         
     #get the info for asthma
@@ -423,11 +423,11 @@ class Get_Accu_Allergies(hass.Hass):
         if(len(myvals) > 1):
             myvalseta = self.cleanString(myvals[0].text.split('>'))
             myvalsetb = self.cleanString(myvals[1].text.split('>'))
-            self.set_state("sensor.acc_asthma_today", state=myvalseta, replace=True, attributes={"icon": "mdi:lungs", "friendly_name": "Asthma Today", "today_asthma_value": myvals[0].text , "today_asthma_phrase": myconds[0].text })
-            self.set_state("sensor.acc_asthma_tomorrow", state=myvalsetb, replace=True, attributes={"icon": "mdi:lungs", "friendly_name": "Asthma Tomorrow", "tomorrow_asthma_value": myvals[1].text , "tomorrow_asthma_phrase": myconds[1].text })
+            self.set_state("sensor.acc_astma_vandaag", state=myvalseta, replace=True, attributes={"icon": "mdi:lungs", "friendly_name": "Astma Vandaag", "astma_waarde_vandaag": myvals[0].text , "astma_info_vandaag": myconds[0].text })
+            self.set_state("sensor.acc_astma_morgen", state=myvalsetb, replace=True, attributes={"icon": "mdi:lungs", "friendly_name": "Astma Morgen", "astma_waarde_morgen": myvals[1].text , "astma_info_morgen": myconds[1].text })
         else:
-            self.set_state("sensor.acc_asthma_today", state='Unknown', replace=True, attributes={"icon": "mdi:lungs", "friendly_name": "Asthma Today", "today_asthma_value": 'Unknown' , "today_asthma_phrase": 'Unknown' })
-            self.set_state("sensor.acc_asthma_tomorrow", state='Unknown', replace=True, attributes={"icon": "mdi:lungs", "friendly_name": "Asthma Tomorrow", "tomorrow_asthma_value": 'Unknown' , "tomorrow_asthma_phrase": 'Unknown' })
+            self.set_state("sensor.acc_astma_vandaag", state='Onbekend', replace=True, attributes={"icon": "mdi:lungs", "friendly_name": "Astma Vandaag", "astma_waarde_vandaag": 'Onbekend' , "astma_info_vandaag": 'Onbekend' })
+            self.set_state("sensor.acc_astma_morgen", state='Onbekend', replace=True, attributes={"icon": "mdi:lungs", "friendly_name": "Astma Morgen", "astma_waarde_morgen": 'Onbekend' , "astma_info_morgen": 'Onbekend' })
         
 
     #get the info for arthritis
@@ -446,11 +446,11 @@ class Get_Accu_Allergies(hass.Hass):
         if(len(myvals) > 1):
             myvalseta = self.cleanString(myvals[0].text.split('>'))
             myvalsetb = self.cleanString(myvals[1].text.split('>'))
-            self.set_state("sensor.acc_arthritis_today", state=myvalseta, replace=True, attributes={"icon": "mdi:bone", "friendly_name": "Arthritis Today", "today_arthritis_value": myvals[0].text , "today_arthritis_phrase": myconds[0].text })
-            self.set_state("sensor.acc_arthritis_tomorrow", state=myvalsetb, replace=True, attributes={"icon": "mdi:bone", "friendly_name": "Arthritis Tomorrow", "tomorrow_arthritis_value": myvals[1].text , "tomorrow_arthritis_phrase": myconds[1].text })
+            self.set_state("sensor.acc_artritis_vandaag", state=myvalseta, replace=True, attributes={"icon": "mdi:bone", "friendly_name": "Artritis Vandaag", "artritis_waarde_vandaag": myvals[0].text , "artritis_info_vandaag": myconds[0].text })
+            self.set_state("sensor.acc_artritis_morgen", state=myvalsetb, replace=True, attributes={"icon": "mdi:bone", "friendly_name": "Artritis Morgen", "artritis_waarde_morgen": myvals[1].text , "artritis_info_morgen": myconds[1].text })
         else:
-            self.set_state("sensor.acc_arthritis_today", state='Unknown', replace=True, attributes={"icon": "mdi:bone", "friendly_name": "Arthritis Today", "today_arthritis_value": 'Unknown' , "today_arthritis_phrase": 'Unknown' })
-            self.set_state("sensor.acc_arthritis_tomorrow", state='Unknown', replace=True, attributes={"icon": "mdi:bone", "friendly_name": "Arthritis Tomorrow", "tomorrow_arthritis_value": 'Unknown' , "tomorrow_arthritis_phrase": 'Unknown' })
+            self.set_state("sensor.acc_artritis_vandaag", state='Onbekend', replace=True, attributes={"icon": "mdi:bone", "friendly_name": "Artritis Vandaag", "artritis_waarde_vandaag": 'Onbekend' , "artritis_info_vandaag": 'Onbekend' })
+            self.set_state("sensor.acc_artritis_morgen", state='Onbekend', replace=True, attributes={"icon": "mdi:bone", "friendly_name": "Artritis Morgen", "artritis_waarde_morgen": 'Onbekend' , "artritis_info_morgen": 'Onbekend' })
 
     #get the info for migraine
     def get_migraine_info(self, txt):
@@ -468,11 +468,11 @@ class Get_Accu_Allergies(hass.Hass):
         if(len(myvals) > 1):
             myvalseta = self.cleanString(myvals[0].text.split('>'))
             myvalsetb = self.cleanString(myvals[1].text.split('>'))
-            self.set_state("sensor.acc_migraine_today", state=myvalseta, replace=True, attributes={"icon": "mdi:head-flash", "friendly_name": "Migraine Today", "today_migraine_value": myvals[0].text , "today_migraine_phrase": myconds[0].text })
-            self.set_state("sensor.acc_migraine_tomorrow", state=myvalsetb, replace=True, attributes={"icon": "mdi:head-flash", "friendly_name": "Migraine Tomorrow", "tomorrow_migraine_value": myvals[1].text , "tomorrow_migraine_phrase": myconds[1].text })
+            self.set_state("sensor.acc_migraine_vandaag", state=myvalseta, replace=True, attributes={"icon": "mdi:head-flash", "friendly_name": "Migraine Vandaag", "migraine_waarde_vandaag": myvals[0].text , "migraine_info_vandaag": myconds[0].text })
+            self.set_state("sensor.acc_migraine_morgen", state=myvalsetb, replace=True, attributes={"icon": "mdi:head-flash", "friendly_name": "Migraine Morgen", "migraine_waarde_morgen": myvals[1].text , "migraine_info_morgen": myconds[1].text })
         else:
-            self.set_state("sensor.acc_migraine_today", state='Unknown', replace=True, attributes={"icon": "mdi:head-flash", "friendly_name": "Migraine Today", "today_migraine_value": 'Unknown' , "today_migraine_phrase": 'Unknown' })
-            self.set_state("sensor.acc_migraine_tomorrow", state='Unknown', replace=True, attributes={"icon": "mdi:head-flash", "friendly_name": "Migraine Tomorrow", "tomorrow_migraine_value": 'Unknown' , "tomorrow_migraine_phrase": 'Unknown' })
+            self.set_state("sensor.acc_migraine_vandaag", state='Onbekend', replace=True, attributes={"icon": "mdi:head-flash", "friendly_name": "Migraine Vandaag", "migraine_waarde_vandaag": 'Onbekend' , "migraine_info_vandaag": 'Onbekend' })
+            self.set_state("sensor.acc_migraine_morgen", state='Onbekend', replace=True, attributes={"icon": "mdi:head-flash", "friendly_name": "Migraine Morgen", "migraine_waarde_morgen": 'Onbekend' , "migraine_info_morgen": 'Onbekend' })
         
     
     #get the info for sinus
@@ -491,11 +491,11 @@ class Get_Accu_Allergies(hass.Hass):
         if(len(myvals) > 1):
             myvalseta = self.cleanString(myvals[0].text.split('>'))
             myvalsetb = self.cleanString(myvals[1].text.split('>'))
-            self.set_state("sensor.acc_sinus_today", state=myvalseta, replace=True, attributes={"icon": "mdi:head-remove-outline", "friendly_name": "Sinus Today", "today_sinus_value": myvals[0].text , "today_sinus_phrase": myconds[0].text })
-            self.set_state("sensor.acc_sinus_tomorrow", state=myvalsetb, replace=True, attributes={"icon": "mdi:head-remove-outline", "friendly_name": "Sinus Tomorrow", "tomorrow_sinus_value": myvals[1].text , "tomorrow_sinus_phrase": myconds[1].text })
+            self.set_state("sensor.acc_sinushoofdpijn_vandaag", state=myvalseta, replace=True, attributes={"icon": "mdi:head-remove-outline", "friendly_name": "Sinushoofdpijn Vandaag", "sinushoofdpijn_waarde_vandaag": myvals[0].text , "sinushoofdpijn_info_vandaag": myconds[0].text })
+            self.set_state("sensor.acc_sinushoofdpijn_morgen", state=myvalsetb, replace=True, attributes={"icon": "mdi:head-remove-outline", "friendly_name": "Sinushoofdpijn Morgen", "sinushoofdpijn_waarde_morgen": myvals[1].text , "sinushoofdpijn_info_morgen": myconds[1].text })
         else:
-            self.set_state("sensor.acc_sinus_today", state='Unknown', replace=True, attributes={"icon": "mdi:head-remove-outline", "friendly_name": "Sinus Today", "today_sinus_value": 'Unknown' , "today_sinus_phrase": 'Unknown' })
-            self.set_state("sensor.acc_sinus_tomorrow", state='Unknown', replace=True, attributes={"icon": "mdi:head-remove-outline", "friendly_name": "Sinus Tomorrow", "tomorrow_sinus_value": 'Unknown' , "tomorrow_sinus_phrase": 'Unknown' })
+            self.set_state("sensor.acc_sinushoofdpijn_vandaag", state='Onbekend', replace=True, attributes={"icon": "mdi:head-remove-outline", "friendly_name": "Sinushoofdpijn Vandaag", "sinushoofdpijn_waarde_vandaag": 'Onbekend' , "sinushoofdpijn_info_vandaag": 'Onbekend' })
+            self.set_state("sensor.acc_sinushoofdpijn_morgen", state='Onbekend', replace=True, attributes={"icon": "mdi:head-remove-outline", "friendly_name": "Sinushoofdpijn Morgen", "sinushoofdpijn_waarde_morgen": 'Onbekend' , "sinushoofdpijn_info_morgen": 'Onbekend' })
 
         
         
