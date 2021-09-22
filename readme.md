@@ -1,3 +1,6 @@
+## Note original repository: https://github.com/simonhq/accu_allergies
+## I just translated all the sensorsnames and text to Dutch, just for personal use.
+## please leave this text in tact
 ## NOTE - added automatic daily download 
 
 # AccuWeather Allergies
